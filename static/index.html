@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>image stream</title>
+    <link rel="stylesheet" href="css/default.css" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script>
+$(function() {
+  var connection = new WebSocket('ws://' + location.host);
+  connection.onopen = function(event) {
+    $('#fotoflo').empty();
+  }
+  connection.onmessage = function(event) {
+    var x = (Math.random() * ($(document).width() - 330)).toFixed();
+    var y = (Math.random() * ($(document).height() - 330)).toFixed();
+	var item = $('<div/>')
+	  .addClass('popup-image')
+      .css({'left': x + 'px', 'top': y + 'px', 'position': 'absolute', 'display': 'none'})
+      .appendTo('body')
+    $('<img/>')
+      .attr('src', event.data)
+      .bind('load', function() {
+        $(item).fadeIn(500).delay(10000).fadeOut(500, function() {
+          $(this).remove()
+        })
+      }).appendTo(item)
+  }
+})
+</script>
+  </head>
+  <body> 
+    <h1>image stream</h1>
+  </body> 
+</html>

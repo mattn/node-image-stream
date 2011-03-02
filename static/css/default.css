@@ -1,0 +1,8 @@
+.popup-image {  
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border: 3px solid #999;
+  padding: 10px;
+  background-color: #fff;
+}  
