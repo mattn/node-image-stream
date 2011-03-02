@@ -15,7 +15,7 @@ var server = http.createServer(function(req, res){
   if (uri.match('/$')) uri = '/index.html'
   try {
     var filename = __dirname + '/static' + uri;
-	var contenttype = extmap[filename.substr(filename.lastIndexOf("."), 4)] || 'application/octet-stream';
+    var contenttype = extmap[filename.substr(filename.lastIndexOf("."), 4)] || 'application/octet-stream';
     var rs = fs.createReadStream(filename);
     res.writeHead(200, {'Content-Type': contenttype});
     sys.pump(rs, res);
