@@ -44,7 +44,7 @@ req.on('response', function (res) {
          // pick images of instagr.am or picplz.com
          if (item.url.match('^http://instagr.am/p/')) {
            var client = http.createClient(80, 'instagr.am');
-           var req = client.request('GET', 'http://instagr.am/api/v1/oembed/?format=json&maxheight=330&url=' + item.url, {'host': 'instagr.am'});
+           var req = client.request('GET', '/api/v1/oembed/?format=json&maxheight=330&url=' + item.url, {'host': 'instagr.am'});
            req.on('response', function(res){
              res.on('data', function(chunk){
                var url = JSON.parse(chunk).url
